@@ -82,13 +82,21 @@ const GitHubUser = () => {
       </section>
 
       {userData !== undefined ? (
-        <div>
-          <img src={userData.avatar_url} alt={userData.name} />
-          <h1>{userData.name}</h1>
-          <p>{userData.bio}</p>
-          <p>Seguidores: {userData.followers}</p>
-          <p>Repositorios públicos: {userData.public_repos}</p>
-        </div>
+        <section className="text-center mt-5">
+          <div className="flex flex-col gap-1 items-center">
+            <img
+              src={userData.avatar_url}
+              className="w-32 h-32 rounded-full"
+              alt={userData.name}
+            />
+            <h1 className="text-2xl font-bold">{userData.name}</h1>
+            <p className="text-base">{userData.bio}</p>
+            <p className="text-base">{userData.followers} seguidores</p>
+            <p className="text-base">
+              {userData.public_repos} repositorios públicos
+            </p>
+          </div>
+        </section>
       ) : undefined}
 
       {userRepos !== undefined ? (
