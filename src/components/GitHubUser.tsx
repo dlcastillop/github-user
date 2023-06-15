@@ -31,7 +31,7 @@ const GitHubUser = () => {
     }
   }, [userName]);
 
-  async function search() {
+  const validateForm = () => {
     const $githubUserInput = document.querySelector(
       "#github-user"
     ) as HTMLInputElement;
@@ -45,7 +45,7 @@ const GitHubUser = () => {
       $span?.classList.remove("hide");
       $span?.classList.add("show");
     }
-  }
+  };
 
   return (
     <div className="form-container">
@@ -56,7 +56,7 @@ const GitHubUser = () => {
         placeholder="Introduce el nombre de usuario de GitHub"
       />
       <span className="hide">Introduce un nombre de usuario</span>
-      <button onClick={search}>Buscar</button>
+      <button onClick={validateForm}>Buscar</button>
     </div>
   );
 };
