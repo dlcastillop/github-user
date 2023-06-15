@@ -78,6 +78,14 @@ const GitHubUser = () => {
           <p>Repositorios públicos: {userData.public_repos}</p>
         </div>
       ) : undefined}
+
+      <section>
+        <h2>Repositorios públicos</h2>
+        <div>
+          <p>Nombre del repositorio</p>
+          <p>Descripción del repositorio</p>
+        </div>
+      </section>
     </>
   );
 };
