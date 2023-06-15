@@ -60,19 +60,15 @@ const GitHubUser = () => {
         <button onClick={validateForm}>Buscar</button>
       </div>
 
-      <div>
-        <img
-          src="https://avatars.githubusercontent.com/u/63487673?v=4"
-          alt=""
-        />
-        <h1>Daniel Castillo</h1>
-        <p>
-          💡 Frontend developer, engineer and freelancer 🚀 Building products
-          that make people happy
-        </p>
-        <p>Seguidores: </p>
-        <p>Repositorios públicos: </p>
-      </div>
+      {userData !== undefined ? (
+        <div>
+          <img src={userData.avatar_url} alt={userData.name} />
+          <h1>{userData.name}</h1>
+          <p>{userData.bio}</p>
+          <p>Seguidores: {userData.followers}</p>
+          <p>Repositorios públicos: {userData.public_repos}</p>
+        </div>
+      ) : undefined}
     </>
   );
 };
