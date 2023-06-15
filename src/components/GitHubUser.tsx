@@ -28,7 +28,11 @@ const GitHubUser = () => {
         method: "GET",
         redirect: "follow",
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
         .then((result) => setUserRepos(result))
         .catch();
     }
@@ -79,13 +83,17 @@ const GitHubUser = () => {
         </div>
       ) : undefined}
 
-      <section>
-        <h2>Repositorios públicos</h2>
-        <div>
-          <p>Nombre del repositorio</p>
-          <p>Descripción del repositorio</p>
-        </div>
-      </section>
+      {userRepos !== undefined ? (
+        <section>
+          <h2>Repositorios públicos</h2>
+          {userRepos.map((el: IUserRepos) => (
+            <div>
+              <p>{el.name}</p>
+              <p>{el.description}</p>
+            </div>
+          ))}
+        </section>
+      ) : undefined}
     </>
   );
 };
