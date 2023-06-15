@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IUserData, IUserRepos } from "../helpers/interfaces";
+import RepoInfo from "./RepoInfo";
 
 const GitHubUser = () => {
   const [userName, setUserName] = useState("");
@@ -86,11 +87,8 @@ const GitHubUser = () => {
       {userRepos !== undefined ? (
         <section>
           <h2>Repositorios públicos</h2>
-          {userRepos.map((el: IUserRepos) => (
-            <div>
-              <p>{el.name}</p>
-              <p>{el.description}</p>
-            </div>
+          {userRepos.map((el: IUserRepos, index: number) => (
+            <RepoInfo name={el.name} description={el.description} key={index} />
           ))}
         </section>
       ) : undefined}

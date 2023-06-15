@@ -140,4 +140,9 @@ interface IUserRepos {
   default_branch: string;
 }
 
-export type { IUserData, IUserRepos };
+interface IRepoInfoProps {
+  name: string;
+  description: string;
+}
+
+export type { IUserData, IUserRepos, IRepoInfoProps };
