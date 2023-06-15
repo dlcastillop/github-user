@@ -42,8 +42,8 @@ const GitHubUser = () => {
   const showMsg = (text: string) => {
     const $span = document.querySelector("span") as HTMLSpanElement;
     $span.innerText = text;
-    $span?.classList.remove("hide");
-    $span?.classList.add("show");
+    $span?.classList.remove("hidden");
+    $span?.classList.add("block");
   };
 
   const validateForm = () => {
@@ -53,8 +53,8 @@ const GitHubUser = () => {
     const $span = document.querySelector("span");
 
     if ($githubUserInput.value !== "") {
-      $span?.classList.remove("show");
-      $span?.classList.add("hide");
+      $span?.classList.remove("block");
+      $span?.classList.add("hidden");
       setUserName($githubUserInput.value);
     } else {
       showMsg("Introduce un nombre de usuario");
@@ -63,16 +63,23 @@ const GitHubUser = () => {
 
   return (
     <>
-      <div className="form-container">
-        <input
-          type="text"
-          name="github-user"
-          id="github-user"
-          placeholder="Introduce el nombre de usuario de GitHub"
-        />
-        <span className="hide"></span>
-        <button onClick={validateForm}>Buscar</button>
-      </div>
+      <section className="flex flex-col justify-center items-center mt-5">
+        <div className="flex gap-2 items-center">
+          <input
+            type="text"
+            id="github-user"
+            className="bg-blue-50 border border-blue-500 text-blue-900 placeholder-blue-500 text-sm rounded-lg block p-2.5"
+            placeholder="Nombre de usuario"
+          />
+          <button
+            onClick={validateForm}
+            className="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+          >
+            Buscar
+          </button>
+        </div>
+        <span className="font-medium mt-2 text-sm text-red-500 hidden"></span>
+      </section>
 
       {userData !== undefined ? (
         <div>
