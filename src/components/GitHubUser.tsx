@@ -48,16 +48,32 @@ const GitHubUser = () => {
   };
 
   return (
-    <div className="form-container">
-      <input
-        type="text"
-        name="github-user"
-        id="github-user"
-        placeholder="Introduce el nombre de usuario de GitHub"
-      />
-      <span className="hide"></span>
-      <button onClick={validateForm}>Buscar</button>
-    </div>
+    <>
+      <div className="form-container">
+        <input
+          type="text"
+          name="github-user"
+          id="github-user"
+          placeholder="Introduce el nombre de usuario de GitHub"
+        />
+        <span className="hide"></span>
+        <button onClick={validateForm}>Buscar</button>
+      </div>
+
+      <div>
+        <img
+          src="https://avatars.githubusercontent.com/u/63487673?v=4"
+          alt=""
+        />
+        <h1>Daniel Castillo</h1>
+        <p>
+          💡 Frontend developer, engineer and freelancer 🚀 Building products
+          that make people happy
+        </p>
+        <p>Seguidores: </p>
+        <p>Repositorios públicos: </p>
+      </div>
+    </>
   );
 };
 
