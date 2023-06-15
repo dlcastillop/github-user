@@ -100,11 +100,19 @@ const GitHubUser = () => {
       ) : undefined}
 
       {userRepos !== undefined ? (
-        <section>
-          <h2>Repositorios públicos</h2>
-          {userRepos.map((el: IUserRepos, index: number) => (
-            <RepoInfo name={el.name} description={el.description} key={index} />
-          ))}
+        <section className="mt-5">
+          <h2 className="text-xl font-bold text-center mb-1">
+            Repositorios públicos
+          </h2>
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mx-5">
+            {userRepos.map((el: IUserRepos, index: number) => (
+              <RepoInfo
+                name={el.name}
+                description={el.description}
+                key={index}
+              />
+            ))}
+          </div>
         </section>
       ) : undefined}
     </>
