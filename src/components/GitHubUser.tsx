@@ -15,21 +15,22 @@ const GitHubUser = () => {
           if (response.ok) {
             return response.json();
           } else {
-            const $span = document.querySelector("span") as HTMLSpanElement;
-            $span.innerText = "Ese nombre de usuario no existe";
-            $span?.classList.remove("hide");
-            $span?.classList.add("show");
+            showMsg("Ese nombre de usuario no existe");
           }
         })
         .then((result) => setUserData(result))
         .catch(() => {
-          const $span = document.querySelector("span") as HTMLSpanElement;
-          $span.innerText = "Ha ocurrido un error";
-          $span?.classList.remove("hide");
-          $span?.classList.add("show");
+          showMsg("Ha ocurrido un error");
         });
     }
   }, [userName]);
+
+  const showMsg = (text: string) => {
+    const $span = document.querySelector("span") as HTMLSpanElement;
+    $span.innerText = text;
+    $span?.classList.remove("hide");
+    $span?.classList.add("show");
+  };
 
   const validateForm = () => {
     const $githubUserInput = document.querySelector(
@@ -42,8 +43,7 @@ const GitHubUser = () => {
       $span?.classList.add("hide");
       setUserName($githubUserInput.value);
     } else {
-      $span?.classList.remove("hide");
-      $span?.classList.add("show");
+      showMsg("Introduce un nombre de usuario");
     }
   };
 
@@ -55,7 +55,7 @@ const GitHubUser = () => {
         id="github-user"
         placeholder="Introduce el nombre de usuario de GitHub"
       />
-      <span className="hide">Introduce un nombre de usuario</span>
+      <span className="hide"></span>
       <button onClick={validateForm}>Buscar</button>
     </div>
   );
