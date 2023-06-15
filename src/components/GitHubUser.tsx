@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import IUserData from "../helpers/interfaces";
+import { IUserData, IUserRepos } from "../helpers/interfaces";
 
 const GitHubUser = () => {
   const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState<IUserData>();
+  const [userRepos, setUserRepos] = useState<[IUserRepos]>();
 
   useEffect(() => {
     if (userName !== "") {
@@ -22,6 +23,14 @@ const GitHubUser = () => {
         .catch(() => {
           showMsg("Ha ocurrido un error");
         });
+
+      fetch(`https://api.github.com/users/${userName}/repos`, {
+        method: "GET",
+        redirect: "follow",
+      })
+        .then((response) => response.json())
+        .then((result) => setUserRepos(result))
+        .catch();
     }
   }, [userName]);
 
